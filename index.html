@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Custom style -->
+  <link rel="stylesheet" href="./css/style.css">
+  <!-- Vue.js -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <title>Todolist</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- header -->
+    <header>
+      <div class="container">
+        <img class="logo" src="img/logo.png" alt="Logo Toboolist">
+      </div>
+      <hr class="ombreggiatura">
+    </header>
+    <!-- /header -->
+
+    <!-- main -->
+    <main>
+      <!-- barra di ricerca -->
+      <div class="main-ricerca">
+        <input class="ricerca" type="text" placeholder="Fare la spesa">
+        <button class="bottone">Add Task</button>
+      </div>
+      <hr class="linea-bianca">
+
+      <!-- task precedenti -->
+      <div class="main-precedenti">
+        <ul class="lista">
+          <li>
+            <h1 class="titolo" v-html="titleIcon + ' ' + titlePrec"></h1>
+          </li>
+          <li v-for="(item, index) in items" :key="index" :class="{ 'testo-cancellato': item.done }" class="cella">
+            <span class="spunta" v-html="item.icon"></span>
+            <span v-if="item.done" class="testo-cancellato">{{ item.text }}</span>
+            <span v-else>{{ item.text }}</span>
+            <span class="evidenziato" :class="item.color">{{ item.cancel }}</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- oggi -->
+      <div class="main-oggi">
+        <ul class="lista">
+          <h1 class="titolo" v-html="titleIconOggi + ' ' + titleOggi"></h1>
+          <li v-for="(item, index) in itemsOggi" :key="index" :class="{ 'testo-cancellato': item.done }" class="cella">
+            <span class="spunta" v-html="item.icon"></span>
+            <span v-if="item.done" class="testo-cancellato">{{ item.text }}</span>
+            <span v-else>{{ item.text }}</span>
+            <span class="evidenziato" :class="item.color">{{ item.cancel }}</span>
+          </li>
+
+          <li class="cella">
+            <span class="x">&cross;</span> Interview John H. <span class="verde-acqua">Recruiting</span>
+          </li>
+
+        </ul>
+      </div>
+
+      <!-- prossimi giorni -->
+      <div class="main-prossimi-giorni">
+        <ul class="lista">
+          <h1 class="titolo" v-html="titleIconPross + ' ' + titlePross"></h1>
+          <li class="cella">
+            <span class="x">&cross;</span>
+            <span>schedule meeting with Alex</span>
+          </li>
+
+          <li v-for="(item, index) in itemsPross" :key="index" :class="{ 'testo-cancellato': item.done }" class="cella">
+            <span class="spunta" v-html="item.icon"></span>
+            <span v-if="item.done" class="testo-cancellato">{{ item.text }}</span>
+            <span v-else>{{ item.text }}</span>
+            <span class="evidenziato" :class="item.color">{{ item.cancel }}</span>
+          </li>
+        </ul>
+      </div>
+    </main>
+    <!-- /main -->
+  </div>
+
+
+  <script src="./js/script.js"></script>
+</body>
+
+</html>
