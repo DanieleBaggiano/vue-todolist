@@ -6,7 +6,7 @@
 }
 
 /* header */
-.container{
+.container {
     height: 100%;
     margin: 0;
     display: flex;
@@ -64,7 +64,8 @@
     width: 80%;
     margin: 0 auto;
     padding: 3%;
-    background-color: #edf2f7;;
+    background-color: #edf2f7;
+    ;
 }
 
 .lista {
@@ -86,6 +87,7 @@
     line-height: 20px;
     font-size: 16px;
     margin-right: 1%;
+    cursor: pointer;
 }
 
 .testo-cancellato {
@@ -134,6 +136,7 @@
     line-height: 20px;
     font-size: 16px;
     margin-right: 1%;
+    cursor: pointer;
 }
 
 .verde-acqua {

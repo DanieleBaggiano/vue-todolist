@@ -7,7 +7,8 @@ createApp({
                 icon: "",
                 text: "",
                 cancel: "",
-                color: ""
+                color: "",
+                done: false
             },
             titleIcon: "&#10148;",
             titlePrec: "TASK PRECEDENTI",
@@ -38,7 +39,7 @@ createApp({
                     done: true
                 },
                 {
-                    icon: "✘",
+                    icon: "&#10005;",
                     text: "Interview John H.",
                     cancel: "Recruiting",
                     color: "verde-acqua",
@@ -56,7 +57,7 @@ createApp({
             titlePross: "PROSSIMI GIORNI",
             itemsPross: [
                 {
-                    icon: "✘",
+                    icon: "&#10005;",
                     text: "schedule meeting with Alex",
                     done: false
                 },
@@ -85,8 +86,13 @@ createApp({
         };
     },
     methods: {
-        addItems: function() {
-            this.items.push(this.newItems);
+        toggleDone: function (item) {
+            item.done = !item.done;
+        },
+
+        addItems: function () {
+            const newItemCopy = Object.assign({}, this.newItems);
+            this.items.push(newItemCopy);
         }
     }
 }).mount("#app");

@@ -37,8 +37,9 @@
           <li>
             <h1 class="titolo" v-html="titleIcon + ' ' + titlePrec"></h1>
           </li>
-          <li v-for="(item, index) in items" :key="index" :class="{ 'testo-cancellato': item.done }" class="cella">
-            <span class="spunta" v-html="item.icon"></span>
+          <li v-for="(item, index) in items" :key="index" class="cella">
+            <span @click="toggleDone(item)" v-if="!item.done" class="x">&#10005;</span>
+            <span @click="toggleDone(item)" v-else class="spunta">&#10003;</span>
             <span v-if="item.done" class="testo-cancellato">{{ item.text }}</span>
             <span v-else>{{ item.text }}</span>
             <span class="evidenziato" :class="item.color">{{ item.cancel }}</span>
@@ -51,8 +52,8 @@
         <ul class="lista">
           <h1 class="titolo" v-html="titleIconOggi + ' ' + titleOggi"></h1>
           <li v-for="(item, index) in itemsOggi" :key="index" class="cella">
-            <span v-if="item.done" class="spunta">&#10003;</span>
-            <span v-else class="x">{{ item.icon }}</span>
+            <span @click="toggleDone(item)" v-if="!item.done" class="x">&#10005;</span>
+            <span @click="toggleDone(item)" v-else class="spunta">&#10003;</span>
             <span v-if="item.done" class="testo-cancellato">{{ item.text }}</span>
             <span v-else>{{ item.text }}</span>
             <span class="evidenziato" :class="item.color">{{ item.cancel }}</span>
@@ -65,8 +66,8 @@
         <ul class="lista">
           <h1 class="titolo" v-html="titleIconPross + ' ' + titlePross"></h1>
           <li v-for="(item, index) in itemsPross" :key="index" class="cella">
-            <span v-if="item.done" class="spunta">&#10003;</span>
-            <span v-else class="x">{{ item.icon }}</span>
+            <span @click="toggleDone(item)" v-if="!item.done" class="x">&#10005;</span>
+            <span @click="toggleDone(item)" v-else class="spunta">&#10003;</span>
             <span v-if="item.done" class="testo-cancellato">{{ item.text }}</span>
             <span v-else>{{ item.text }}</span>
             <span class="evidenziato" :class="item.color">{{ item.cancel }}</span>
@@ -76,7 +77,6 @@
     </main>
     <!-- /main -->
   </div>
-
 
   <script src="./js/script.js"></script>
 </body>
