@@ -26,8 +26,8 @@
     <main>
       <!-- barra di ricerca -->
       <div class="main-ricerca">
-        <input class="ricerca" type="text" placeholder="Fare la spesa">
-        <button class="bottone">Add Task</button>
+        <input v-model="newItems.text" class="ricerca" type="text" placeholder="Fare la spesa">
+        <button @click="addItems" class="bottone">Add Task</button>
       </div>
       <hr class="linea-bianca">
 
@@ -50,17 +50,13 @@
       <div class="main-oggi">
         <ul class="lista">
           <h1 class="titolo" v-html="titleIconOggi + ' ' + titleOggi"></h1>
-          <li v-for="(item, index) in itemsOggi" :key="index" :class="{ 'testo-cancellato': item.done }" class="cella">
-            <span class="spunta" v-html="item.icon"></span>
+          <li v-for="(item, index) in itemsOggi" :key="index" class="cella">
+            <span v-if="item.done" class="spunta">&#10003;</span>
+            <span v-else class="x">{{ item.icon }}</span>
             <span v-if="item.done" class="testo-cancellato">{{ item.text }}</span>
             <span v-else>{{ item.text }}</span>
             <span class="evidenziato" :class="item.color">{{ item.cancel }}</span>
           </li>
-
-          <li class="cella">
-            <span class="x">&cross;</span> Interview John H. <span class="verde-acqua">Recruiting</span>
-          </li>
-
         </ul>
       </div>
 
@@ -68,13 +64,9 @@
       <div class="main-prossimi-giorni">
         <ul class="lista">
           <h1 class="titolo" v-html="titleIconPross + ' ' + titlePross"></h1>
-          <li class="cella">
-            <span class="x">&cross;</span>
-            <span>schedule meeting with Alex</span>
-          </li>
-
-          <li v-for="(item, index) in itemsPross" :key="index" :class="{ 'testo-cancellato': item.done }" class="cella">
-            <span class="spunta" v-html="item.icon"></span>
+          <li v-for="(item, index) in itemsPross" :key="index" class="cella">
+            <span v-if="item.done" class="spunta">&#10003;</span>
+            <span v-else class="x">{{ item.icon }}</span>
             <span v-if="item.done" class="testo-cancellato">{{ item.text }}</span>
             <span v-else>{{ item.text }}</span>
             <span class="evidenziato" :class="item.color">{{ item.cancel }}</span>

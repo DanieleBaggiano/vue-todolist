@@ -3,6 +3,12 @@ const { createApp } = Vue;
 createApp({
     data() {
         return {
+            newItems: {
+                icon: "",
+                text: "",
+                cancel: "",
+                color: ""
+            },
             titleIcon: "&#10148;",
             titlePrec: "TASK PRECEDENTI",
             items: [
@@ -21,28 +27,28 @@ createApp({
                     icon: "&#10003;",
                     text: "Recruiting blog post",
                     cancel: "Editorial",
-                    color: "blu", 
+                    color: "blu",
                     done: true
                 },
                 {
                     icon: "&#10003;",
                     text: "Mobile app launch",
                     cancel: "Q1 Goals",
-                    color: "viola", 
+                    color: "viola",
                     done: true
                 },
                 {
-                    icon: "&cross;",
+                    icon: "✘",
                     text: "Interview John H.",
                     cancel: "Recruiting",
-                    color: "verde-acqua", 
-                    done: true
+                    color: "verde-acqua",
+                    done: false
                 },
                 {
                     icon: "&#10003;",
                     text: "Summit update to mobile storefronts",
                     cancel: "Mobile",
-                    color: "viola", 
+                    color: "viola",
                     done: true
                 },
             ],
@@ -50,7 +56,7 @@ createApp({
             titlePross: "PROSSIMI GIORNI",
             itemsPross: [
                 {
-                    icon: "&cross;",
+                    icon: "✘",
                     text: "schedule meeting with Alex",
                     done: false
                 },
@@ -58,25 +64,30 @@ createApp({
                     icon: "&#10003;",
                     text: "Homepage refresh",
                     cancel: "Website",
-                    color: "rosa", 
+                    color: "rosa",
                     done: true
                 },
                 {
                     icon: "&#10003;",
                     text: "Onboard new Sales team members",
                     cancel: "Sales",
-                    color: "verde", 
+                    color: "verde",
                     done: true
                 },
                 {
                     icon: "&#10003;",
                     text: "Review editorial calendar",
                     cancel: "Editorial",
-                    color: "blu", 
+                    color: "blu",
                     done: true
                 },
             ]
         };
+    },
+    methods: {
+        addItems: function() {
+            this.items.push(this.newItems);
+        }
     }
 }).mount("#app");
 

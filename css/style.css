@@ -92,6 +92,10 @@
     text-decoration: line-through;
 }
 
+.no-line-through {
+    text-decoration: none;
+}
+
 .evidenziato {
     color: white;
     border-radius: 15px;
