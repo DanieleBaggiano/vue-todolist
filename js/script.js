@@ -91,8 +91,20 @@ createApp({
         },
 
         addItems: function () {
-            const newItemCopy = Object.assign({}, this.newItems);
-            this.items.push(newItemCopy);
+            if (this.newItems.text.trim() !== "") {
+                const newItemCopy = Object.assign({}, this.newItems);
+                this.items.push(newItemCopy);
+                this.newItems.text = "";
+            }
+        },        
+        
+        removeTodo: function(index) {
+            this.items.splice(index, 1);
+        },
+        removeTodo2: function(index) {
+            this.itemsOggi.splice(index, 1);
+        },removeTodo3: function(index) {
+            this.itemsPross.splice(index, 1);
         }
     }
 }).mount("#app");

@@ -4,6 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- font awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- Custom style -->
   <link rel="stylesheet" href="./css/style.css">
   <!-- Vue.js -->
@@ -26,7 +28,7 @@
     <main>
       <!-- barra di ricerca -->
       <div class="main-ricerca">
-        <input v-model="newItems.text" class="ricerca" type="text" placeholder="Fare la spesa">
+        <input @keyup.enter="addItems" v-model.trim="newItems.text" class="ricerca" type="text" placeholder="Fare la spesa">
         <button @click="addItems" class="bottone">Add Task</button>
       </div>
       <hr class="linea-bianca">
@@ -38,11 +40,16 @@
             <h1 class="titolo" v-html="titleIcon + ' ' + titlePrec"></h1>
           </li>
           <li v-for="(item, index) in items" :key="index" class="cella">
-            <span @click="toggleDone(item)" v-if="!item.done" class="x">&#10005;</span>
-            <span @click="toggleDone(item)" v-else class="spunta">&#10003;</span>
-            <span v-if="item.done" class="testo-cancellato">{{ item.text }}</span>
-            <span v-else>{{ item.text }}</span>
-            <span class="evidenziato" :class="item.color">{{ item.cancel }}</span>
+            <div class="list-item">
+              <span @click="toggleDone(item)" v-if="!item.done" class="x">&#10005;</span>
+              <span @click="toggleDone(item)" v-else class="spunta">&#10003;</span>
+              <span v-if="item.done" class="testo-cancellato">{{ item.text }}</span>
+              <span v-else>{{ item.text }}</span>
+              <span class="evidenziato" :class="item.color">{{ item.cancel }}</span>
+            </div>
+            <div class="trash">
+              <i class="fa-solid fa-trash" @click="removeTodo(index, 'items')"></i>
+            </div>
           </li>
         </ul>
       </div>
@@ -52,11 +59,15 @@
         <ul class="lista">
           <h1 class="titolo" v-html="titleIconOggi + ' ' + titleOggi"></h1>
           <li v-for="(item, index) in itemsOggi" :key="index" class="cella">
-            <span @click="toggleDone(item)" v-if="!item.done" class="x">&#10005;</span>
-            <span @click="toggleDone(item)" v-else class="spunta">&#10003;</span>
-            <span v-if="item.done" class="testo-cancellato">{{ item.text }}</span>
-            <span v-else>{{ item.text }}</span>
-            <span class="evidenziato" :class="item.color">{{ item.cancel }}</span>
+            <div class="list-item">
+              <span @click="toggleDone(item)" v-if="!item.done" class="x">&#10005;</span>
+              <span @click="toggleDone(item)" v-else class="spunta">&#10003;</span>
+              <span v-if="item.done" class="testo-cancellato">{{ item.text }}</span>
+              <span v-else>{{ item.text }}</span>
+              <span class="evidenziato" :class="item.color">{{ item.cancel }}</span>
+            </div>
+            <div class="trash">
+              <i class="fa-solid fa-trash" @click="removeTodo2(index, 'itemsOggi')"></i>
           </li>
         </ul>
       </div>
@@ -66,11 +77,15 @@
         <ul class="lista">
           <h1 class="titolo" v-html="titleIconPross + ' ' + titlePross"></h1>
           <li v-for="(item, index) in itemsPross" :key="index" class="cella">
-            <span @click="toggleDone(item)" v-if="!item.done" class="x">&#10005;</span>
-            <span @click="toggleDone(item)" v-else class="spunta">&#10003;</span>
-            <span v-if="item.done" class="testo-cancellato">{{ item.text }}</span>
-            <span v-else>{{ item.text }}</span>
-            <span class="evidenziato" :class="item.color">{{ item.cancel }}</span>
+            <div class="list-item">
+              <span @click="toggleDone(item)" v-if="!item.done" class="x">&#10005;</span>
+              <span @click="toggleDone(item)" v-else class="spunta">&#10003;</span>
+              <span v-if="item.done" class="testo-cancellato">{{ item.text }}</span>
+              <span v-else>{{ item.text }}</span>
+              <span class="evidenziato" :class="item.color">{{ item.cancel }}</span>
+            </div>
+            <div class="trash">
+              <i class="fa-solid fa-trash" @click="removeTodo3(index, 'itemsPross')"></i>
           </li>
         </ul>
       </div>

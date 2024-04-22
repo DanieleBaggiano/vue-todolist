@@ -52,6 +52,7 @@
     border-radius: 5px;
     background-color: rgb(0, 115, 255);
     color: white;
+    cursor: pointer;
 }
 
 .linea-bianca {
@@ -65,7 +66,6 @@
     margin: 0 auto;
     padding: 3%;
     background-color: #edf2f7;
-    ;
 }
 
 .lista {
@@ -110,6 +110,13 @@
     border-radius: 5px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
     margin: 1%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.list-item {
+    width: 50%;
 }
 
 .main-oggi {
@@ -170,4 +177,8 @@
 
 .blu {
     background-color: rgb(0, 132, 255);
+}
+
+.fa-trash {
+    cursor: pointer;
 }
